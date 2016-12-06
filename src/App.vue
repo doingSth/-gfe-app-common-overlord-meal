@@ -43,7 +43,7 @@
                         "distance":"712m"
                     }*/
                 ],
-                moreModule:true,
+                moreModule:false,
                 lng:undefined,
                 lat:undefined,
                 cityId:undefined
@@ -75,6 +75,8 @@
                     if(json&&json.activities){
                         if(json.activities.length<len){
                             that.moreModule = false;
+                        }else {
+                            that.moreModule = true;
                         }
                         that.list=that.list.concat(json.activities);
                     }else if(that.list.length < 1){
