@@ -1,7 +1,7 @@
 <template>
   <div class="default">
     <slot></slot>
-    <div class="item" v-for="item in list" >
+    <div class="item" v-for="item in list" @click="open(item.activityId)">
       <div class="imgDiv">
         <img class="pic" :src="item.picAddress"/>
         <i v-if="false" class="hot">
@@ -47,6 +47,7 @@
                 lng:undefined,
                 lat:undefined,
                 cityId:undefined
+
             }
         },
         ready(){
@@ -61,6 +62,19 @@
 
         },
         methods:{
+            open(id){
+                var url ;
+                if (location.href.indexOf('test.h5.meituan') > -1) {
+                  url = 'http://test.i.meituan.com/specir?dest='+encodeURIComponent(`https://m.51ping.com/mobile/event/${id}?source=meituan`)+'&mustlogin=1';
+                } else if(location.href.indexOf('meituan') > -1) {
+                  url = 'http://i.meituan.com/specir?dest='+encodeURIComponent(`https://m.dianping.com/mobile/event/${id}?source=meituan`)+'&mustlogin=1';
+                } else if (location.href.indexOf('dianping') > -1) {
+                  url = `//m.dianping.com/mobile/event/${id}?source=dpapp`;
+                } else {
+                  url = `//m.51ping.com/mobile/event/${id}?source=dpapp`;
+                }
+                location.href=url;
+            },
             getDineList(len){
                 var params = {
                     type:6,//休闲娱乐

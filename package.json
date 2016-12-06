@@ -67,7 +67,7 @@
     "url": "http://code.dianpingoa.com/gfe/app-common-overlord-meal/issues"
   },
   "homepage": "http://code.dianpingoa.com/gfe/app-common-overlord-meal",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "main": "./src/App.vue",
   "license": "Apache-2.0"
 }
