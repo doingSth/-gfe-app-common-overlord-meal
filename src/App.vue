@@ -14,7 +14,7 @@
           <span class="btn">抢</span>
         </p>
         <p class="row2">
-          <span class="address">{{item.regionName+" "+item.distance}}</span>
+          <span class="address">{{(item.regionName||"")+" "+(item.distance||"")}}</span>
           <span class="number">{{item.userNum}}人关注</span>
         </p>
       </div>
