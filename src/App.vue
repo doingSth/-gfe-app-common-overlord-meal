@@ -76,7 +76,7 @@
                         if(json.activities.length<len){
                             that.moreModule = false;
                         }
-                        that.list.concat(json.activities);
+                        that.list=that.list.concat(json.activities);
                     }else if(that.list.length < 1){
                         that.$children.forEach((it)=>{
                             it.$destroy(true);
