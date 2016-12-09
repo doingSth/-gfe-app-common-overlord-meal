@@ -86,6 +86,9 @@
                 }
                 var that = this;
                 this.getFreeDineList(params).then((json)=>{
+                    if(!json||!json.activities){
+                      that.moreModule = false;
+                    }
                     if(json&&json.activities){
                         if(json.activities.length<len){
                             that.moreModule = false;
