@@ -1,7 +1,7 @@
 <template>
   <div class="default">
     <slot></slot>
-    <div class="item" v-for="item in list" @click="open(item.activityId)">
+    <div class="item" v-for="item in list" @click="open(item.activityId,$index)">
       <div class="imgDiv">
         <img class="pic" :src="item.picAddress"/>
         <i v-if="false" class="hot">
@@ -62,7 +62,15 @@
 
         },
         methods:{
-            open(id){
+            open(id,index){
+                /*
+                  点击霸王餐打点
+                 */
+                this.track("click","overlordMealClick",{
+                    overlordType:6,//休闲娱乐
+                    overlordId:id,
+                    index:index
+                });
                 var url ;
                 if (location.href.indexOf('test.h5.meituan') > -1) {
                   url = 'http://test.i.meituan.com/specir?dest='+encodeURIComponent(`https://m.51ping.com/mobile/event/${id}?source=meituan`)+'&mustlogin=1';
@@ -73,7 +81,7 @@
                 } else {
                   url = `//m.51ping.com/mobile/event/${id}?source=dpapp`;
                 }
-                location.href=url;
+                setTimeout(function(){location.href=url;},300);
             },
             getDineList(len){
                 var params = {
